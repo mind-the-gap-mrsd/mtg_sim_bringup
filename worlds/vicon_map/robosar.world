@@ -102,5 +102,5 @@ define agent position
   )
 
 agent( pose [ 30 15 0.00 0.0] color "blue")
-agent( pose [ 20 10 0.00 -90.0] color "green")
-agent( pose [ 0 10 0.00 -90.0] color "yellow")
+agent( pose [ 20 10 0.00 0] color "green")
+agent( pose [ 0 10 0.00 0] color "yellow")
