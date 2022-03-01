@@ -1,6 +1,6 @@
 show_clock 0
 show_clock_interval 10000
-resolution 0.02
+#resolution 0.02
 threads 4
 speedup 1
 
@@ -44,11 +44,8 @@ floorplan
   bitmap "../stage_config/maps/willow-full.pgm"
   #size [60.000 60.000 0.800]
   #size [80.5 80.5 0.5]
-  size [8.4 5.05 0.5]
-  #size [16.1 16.1 0.5]
-  #size [8.05 8.05 0]
-  pose [0.11 0.245 0.000 0.000]
-
+  size [58.4 52.6 1]
+  pose [29.2 26.3 0.000 0.0]
 )
 
 
@@ -80,7 +77,7 @@ window
 define agent position
 (
   # actual size
-  size [0.05 0.05 0.05] # sizes from MobileRobots' web site
+  size [0.5 0.5 0.5] # sizes from MobileRobots' web site
 
   # the pioneer's center of rotation is offset from its center of area
   origin [0 0 0 0]
@@ -96,7 +93,7 @@ define agent position
   fiducial_return 1           	# Seen as "1" fiducial finders
   sicklaser(
 	pose [ 0 0 0 0 ] 
-    size [0.03 0.03 0.03]
+    size [0.2 0.2 0.2]
   )
   
   # [ xmin xmax ymin ymax zmin zmax amin amax ]				
@@ -104,6 +101,6 @@ define agent position
   acceleration_bounds [-3 3 -3 3 0 0 -270 270.0 ]
   )
 
-agent( pose [ 0.5 0.0 0.00 -90.0])
-agent( pose [ 0.035 0.0 0.00 -90.0])
-agent( pose [ 0.5 0.8 0.00 -90.0])
+agent( pose [ 30 15 0.00 0.0] color "blue")
+agent( pose [ 20 10 0.00 -90.0] color "green")
+agent( pose [ 0 10 0.00 -90.0] color "yellow")
