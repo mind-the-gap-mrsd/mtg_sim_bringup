@@ -37,3 +37,6 @@ DWAPlannerROS:
 
   use_dwa: true
   restore_defaults: true
+
+GlobalPlanner:
+  allow_unknown: false

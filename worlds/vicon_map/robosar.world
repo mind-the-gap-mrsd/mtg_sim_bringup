@@ -77,7 +77,7 @@ window
 define agent position
 (
   # actual size
-  size [0.5 0.5 0.5] # sizes from MobileRobots' web site
+  size [0.2 0.2 0.2] # sizes from MobileRobots' web site
 
   # the pioneer's center of rotation is offset from its center of area
   origin [0 0 0 0]
@@ -93,7 +93,7 @@ define agent position
   fiducial_return 1           	# Seen as "1" fiducial finders
   sicklaser(
 	pose [ 0 0 0 0 ] 
-    size [0.2 0.2 0.2]
+    size [0.1 0.1 0.1]
   )
   
   # [ xmin xmax ymin ymax zmin zmax amin amax ]				
@@ -101,6 +101,6 @@ define agent position
   acceleration_bounds [-3 3 -3 3 0 0 -270 270.0 ]
   )
 
-agent( pose [ 30 15 0.00 0.0] color "blue")
-agent( pose [ 20 10 0.00 0] color "green")
-agent( pose [ 0 10 0.00 0] color "yellow")
+agent( pose [ 45 10 0.00 0.0] color "blue")
+agent( pose [ 49 11 0.00 0] color "green")
+agent( pose [ 50 10 0.00 0] color "yellow")

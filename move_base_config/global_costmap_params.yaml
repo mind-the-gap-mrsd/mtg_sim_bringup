@@ -14,5 +14,5 @@ global_costmap:
   rolling_window: false
   transform_tolerance: 0.5
   cost_scaling_factor: 10.0
-  inflation_radius: 0.55
+  inflation_radius: 0.2
   footprint_padding: 0.02

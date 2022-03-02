@@ -16,7 +16,8 @@ footprint: [[-0.2, -0.2], [-0.2, 0.2], [0.2, 0.2], [0.2, -0.2]]
 footprint_padding: 0.1
 
 #Cost function parameters
-inflation_radius: 0.6
+inflation_radius: 0.1
+track_unknown_space: true
 
 #Configuration for the sensors that the costmap will use to update a map
 observation_sources: base_scan
