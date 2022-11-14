@@ -5,8 +5,10 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-      Splitter Ratio: 0.49889135360717773
-    Tree Height: 405
+        - /Marker3
+        - /Marker4
+      Splitter Ratio: 0.8029412031173706
+    Tree Height: 592
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -46,31 +48,101 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        agent_0/base_footprint:
+          Value: true
+        agent_0/base_laser_link:
+          Value: true
+        agent_0/base_link:
+          Value: true
+        agent_0/odom:
+          Value: true
+        agent_1/base_footprint:
+          Value: true
+        agent_1/base_laser_link:
+          Value: true
+        agent_1/base_link:
+          Value: true
+        agent_1/odom:
+          Value: true
+        agent_2/base_footprint:
+          Value: true
+        agent_2/base_laser_link:
+          Value: true
+        agent_2/base_link:
+          Value: true
+        agent_2/odom:
+          Value: true
+        agent_3/base_footprint:
+          Value: true
+        agent_3/base_laser_link:
+          Value: true
+        agent_3/base_link:
+          Value: true
+        agent_3/odom:
+          Value: true
+        agent_4/base_footprint:
+          Value: true
+        agent_4/base_laser_link:
+          Value: true
+        agent_4/base_link:
+          Value: true
+        agent_4/odom:
+          Value: true
+        base_link:
+          Value: true
+        bellows_link:
+          Value: true
+        bellows_link2:
+          Value: true
+        elbow_flex_link:
+          Value: true
+        estop_link:
+          Value: true
+        forearm_roll_link:
+          Value: true
+        gripper_link:
+          Value: true
+        head_camera_depth_frame:
+          Value: true
+        head_camera_depth_optical_frame:
+          Value: true
+        head_camera_link:
+          Value: true
+        head_camera_rgb_frame:
+          Value: true
+        head_camera_rgb_optical_frame:
+          Value: true
+        head_pan_link:
+          Value: true
+        head_tilt_link:
+          Value: true
+        l_gripper_finger_link:
+          Value: true
+        l_wheel_link:
+          Value: true
+        laser_link:
+          Value: true
         map:
           Value: true
-        robot_0/base_footprint:
+        r_gripper_finger_link:
           Value: true
-        robot_0/base_laser_link:
+        r_wheel_link:
           Value: true
-        robot_0/base_link:
+        shoulder_lift_link:
           Value: true
-        robot_0/odom:
+        shoulder_pan_link:
           Value: true
-        robot_1/base_footprint:
+        torso_fixed_link:
           Value: true
-        robot_1/base_laser_link:
+        torso_lift_link:
           Value: true
-        robot_1/base_link:
+        upperarm_roll_link:
           Value: true
-        robot_1/odom:
+        world_frame:
           Value: true
-        robot_2/base_footprint:
+        wrist_flex_link:
           Value: true
-        robot_2/base_laser_link:
-          Value: true
-        robot_2/base_link:
-          Value: true
-        robot_2/odom:
+        wrist_roll_link:
           Value: true
       Marker Alpha: 1
       Marker Scale: 1
@@ -80,20 +152,30 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
-          robot_0/odom:
-            robot_0/base_footprint:
-              robot_0/base_link:
-                robot_0/base_laser_link:
+          agent_0/odom:
+            agent_0/base_footprint:
+              agent_0/base_link:
+                agent_0/base_laser_link:
                   {}
-          robot_1/odom:
-            robot_1/base_footprint:
-              robot_1/base_link:
-                robot_1/base_laser_link:
+          agent_1/odom:
+            agent_1/base_footprint:
+              agent_1/base_link:
+                agent_1/base_laser_link:
                   {}
-          robot_2/odom:
-            robot_2/base_footprint:
-              robot_2/base_link:
-                robot_2/base_laser_link:
+          agent_2/odom:
+            agent_2/base_footprint:
+              agent_2/base_link:
+                agent_2/base_laser_link:
+                  {}
+          agent_3/odom:
+            agent_3/base_footprint:
+              agent_3/base_link:
+                agent_3/base_laser_link:
+                  {}
+          agent_4/odom:
+            agent_4/base_footprint:
+              agent_4/base_link:
+                agent_4/base_laser_link:
                   {}
       Update Interval: 0
       Value: true
@@ -397,6 +479,38 @@ Visualization Manager:
       Topic: /robot_5/move_base_node/global_costmap/footprint
       Unreliable: false
       Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /lazy_traffic_controller/agent_0/vel_marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /lazy_traffic_controller/agent_1/vel_marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /lazy_traffic_controller/agent_2/vel_marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /lazy_traffic_controller/agent_3/vel_marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -425,7 +539,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 64.72699737548828
+      Distance: 55.18145751953125
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -433,9 +547,9 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 15.923404693603516
-        Y: 16.189294815063477
-        Z: -30.178112030029297
+        X: 10.665143013000488
+        Y: 9.439722061157227
+        Z: -30.18490219116211
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
@@ -448,10 +562,10 @@ Visualization Manager:
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 752
+  Height: 1016
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000015600000296fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb0000001e0054006f006f006c002000500072006f0070006500720074006900650073010000003d000000700000005c00fffffffb000000100044006900730070006c00610079007301000000b300000220000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002aefc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000002ae000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004fc0000003efc0100000002fb0000000800540069006d00650000000000000004fc000004f300fffffffb0000000800540069006d006501000000000000045000000000000000000000040e0000029600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000400000000000002500000039efc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000002db000000c900fffffffb0000001e0054006f006f006c002000500072006f0070006500720074006900650073010000031e000000bd0000005c00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002aefc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000002ae000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004fc0000003efc0100000002fb0000000800540069006d00650000000000000004fc000004f300fffffffb0000000800540069006d00650100000000000004500000000000000000000004e20000039e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -460,6 +574,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1386
-  X: 303
-  Y: 114
+  Width: 1848
+  X: 72
+  Y: 27
