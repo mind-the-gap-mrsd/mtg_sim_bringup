@@ -19,7 +19,7 @@ class AprilTagSim:
         rospy.init_node("generate_april_tags_node")
         self.num_april_tags = 12
         self.listener = tf.TransformListener()
-        self.distance_threshold = 0.5
+        self.distance_threshold = 2
         self.rate = rospy.Rate(0.5)
         self.detected_april_tags = []
         self.victim_pub = rospy.Publisher(
@@ -97,7 +97,7 @@ class AprilTagSim:
         return robot_pos
 
     def publish_victims(self, pose, agent_name, tag_id):
-        print("April Tag at position {} detected by {}".format(pose, agent_name))
+        print("April Tag id {} detected by {}".format(tag_id, agent_name))
         m = Marker()
         m.header.frame_id = "map"
         m.pose.position.x = pose[0]
