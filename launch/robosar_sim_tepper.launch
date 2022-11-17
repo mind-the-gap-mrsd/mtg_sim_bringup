@@ -4,6 +4,7 @@
 
   <node name="map_server" pkg="map_server" type="map_server" args="$(find robosar_sim_bringup)/worlds/stage_config/maps/tepper.yaml" respawn="false" />
   
+  <node pkg="robosar_sim_bringup" type="AprilTagSim.py" name="generate_april_tags_node" output="screen" />
   <group ns="robosar_agent_bringup_node">
     <node pkg="stage_ros_add_pose_and_crash" type="stageros" name="stageros" args="$(find robosar_sim_bringup)/worlds/stage_config/worlds/tepper.world" respawn="false" >
       <param name="base_watchdog_timeout" value="0.2"/>
