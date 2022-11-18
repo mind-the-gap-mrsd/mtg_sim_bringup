@@ -30,7 +30,7 @@ class AprilTagSim:
         Gets map message
         """
         rospy.logdebug("Waiting for map")
-        map_msg = rospy.wait_for_message("/map", OccupancyGrid)
+        map_msg = rospy.wait_for_message("/sim_map", OccupancyGrid)
         rospy.logdebug("Map received")
         scale = map_msg.info.resolution
         origin = [map_msg.info.origin.position.x,
