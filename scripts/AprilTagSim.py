@@ -48,14 +48,14 @@ class AprilTagSim:
 
     def generate_random_poses(self):
         self.map_msg, self.map_data, self.scale, self.origin, _ = self.get_map_info()
-        self.april_tag_poses = []
-        i = 0
-        while (i < self.num_april_tags):
-            x = np.random.randint(self.origin[0], self.map_msg.info.width)
-            y = np.random.randint(self.origin[1], self.map_msg.info.height)
-            if self.map_data[y, x] == 0:
-                self.april_tag_poses.append([x*self.scale, y*self.scale])
-                i += 1
+        self.april_tag_poses = [[4,17.6][3.7,8.75][5.75,5.13][7.14,11.4][10.2,9.5][14.7,8.9][13.1,17.6][15.8,17.4][6.45,17.5][16.2,12.3][10.9,5.3][9.2,17.5]]
+        # i = 0
+        # while (i < self.num_april_tags):
+        #     x = np.random.randint(self.origin[0], self.map_msg.info.width)
+        #     y = np.random.randint(self.origin[1], self.map_msg.info.height)
+        #     if self.map_data[y, x] == 0:
+        #         self.april_tag_poses.append([x*self.scale, y*self.scale])
+        #         i += 1
         print("The random generated poses are: ", self.april_tag_poses)
 
     def get_active_agents(self):
