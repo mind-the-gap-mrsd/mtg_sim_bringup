@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 import actionlib
 import numpy as np
@@ -19,7 +20,7 @@ class AprilTagSim:
         rospy.init_node("generate_april_tags_node")
         self.num_april_tags = 12
         self.listener = tf.TransformListener()
-        self.distance_threshold = 2
+        self.distance_threshold = 1.5
         self.rate = rospy.Rate(0.5)
         self.detected_april_tags = []
         self.victim_pub = rospy.Publisher(
@@ -48,7 +49,8 @@ class AprilTagSim:
 
     def generate_random_poses(self):
         self.map_msg, self.map_data, self.scale, self.origin, _ = self.get_map_info()
-        self.april_tag_poses = [[4,17.6][3.7,8.75][5.75,5.13][7.14,11.4][10.2,9.5][14.7,8.9][13.1,17.6][15.8,17.4][6.45,17.5][16.2,12.3][10.9,5.3][9.2,17.5]]
+        self.april_tag_poses = [[4,17.6], [3.7,8.75], [5.75,5.13], [7.14,11.4], [10.2,9.5], 
+            [14.7,8.9], [13.1,17.6], [15.8,17.4], [6.45,18.5], [16.2,12.3], [10.9,6.3], [9.2,18.5]]
         # i = 0
         # while (i < self.num_april_tags):
         #     x = np.random.randint(self.origin[0], self.map_msg.info.width)
@@ -57,6 +59,25 @@ class AprilTagSim:
         #         self.april_tag_poses.append([x*self.scale, y*self.scale])
         #         i += 1
         print("The random generated poses are: ", self.april_tag_poses)
+
+    def publish_ground_truth_victims(self, tag_id, pose):
+        m = Marker()
+        m.header.frame_id = "map"
+        m.pose.position.x = pose[0]
+        m.pose.position.y = pose[1]
+        m.id = tag_id + 100
+        m.pose.orientation.x = 0
+        m.pose.orientation.y = 0
+        m.pose.orientation.z = 0
+        m.pose.orientation.w = 1
+        m.scale.x = 0.2
+        m.scale.y = 0.2
+        m.scale.z = 0.2
+        m.color.r = 0.2
+        m.color.g = 0
+        m.color.b = 1
+        m.color.a = 1
+        self.victim_pub.publish(m)
 
     def get_active_agents(self):
         # Get active agents
@@ -89,7 +110,7 @@ class AprilTagSim:
         for name in self.agent_active_status:
             now = rospy.Time.now()
             self.listener.waitForTransform(
-                "map", name + "/base_link", now, rospy.Duration(1.0)
+                "map", name + "/base_link", now, rospy.Duration(5.0)
             )
             (trans, rot) = self.listener.lookupTransform(
                 "map", name + "/base_link", now)
@@ -133,7 +154,12 @@ class AprilTagSim:
         self.generate_random_poses()
         self.get_active_agents()
 
+        for tag_id, pose in enumerate(self.april_tag_poses):
+            self.publish_ground_truth_victims(tag_id, pose)
+
         while not rospy.is_shutdown():
+            for tag_id, pose in enumerate(self.april_tag_poses):
+                self.publish_ground_truth_victims(tag_id, pose)
             self.check_agent_poses()
             self.rate.sleep()
 
