@@ -2,15 +2,15 @@ show_clock 0
 show_clock_interval 10000
 #resolution 0.02
 threads 4
-speedup 1
+speedup 1.000
 
 define sicklaser ranger
 (
   sensor(
     pose [ 0 0 0.1 0 ]
-    fov 360
-    range [ 0.0 7.0 ]
-    samples 512
+    fov 240
+    range [ 0.02.0 5.6 ]
+    samples 682
   )
   color "random"
   block(
@@ -42,17 +42,17 @@ floorplan
 (
   name "tepper"
   bitmap "../maps/tepper_sim_map.png"
-  size [21.225 19.425 1]
-  pose [10.6125 9.7125 0.000 0.0]
+  size [21.225 19.425 1.000]
+  pose [10.613 9.713 0.000 0.000]
 )
 
 window
 (
-  size [1500 1500]
+  size [445 463]
   
 # Camera options 
-  scale 20
-  center [0  0]
+  scale 24.200
+  center [11.150  9.808]
   rotate [ 0.000  0.000 ]
 
 
@@ -76,7 +76,7 @@ define agent position
   size [0.105 0.105 0.105] # sizes from MobileRobots' web site
 
   # the pioneer's center of rotation is offset from its center of area
-  origin [0 0 0 0]
+  origin [0.000 0.000 0.000 0.000]
 
   # draw a nose on the robot so we can see which way it points
   gui_nose 1
@@ -84,12 +84,12 @@ define agent position
   color "random"
   drive "omni"		 	# Differential steering model.
   obstacle_return 1           	# Can hit things.
-  ranger_return 7           	# reflects sonar beams
+  ranger_return 7.000           	# reflects sonar beams
   blob_return 1               	# Seen by blobfinders  
   fiducial_return 1           	# Seen as "1" fiducial finders
   sicklaser(
-	pose [ 0 0 0 0 ] 
-    size [0.1 0.1 0.1]
+	pose [ 0.000 0.000 0.000 0.000 ] 
+    size [0.100 0.100 0.100]
   )
   
   # [ xmin xmax ymin ymax zmin zmax amin amax ]				
@@ -97,8 +97,8 @@ define agent position
   acceleration_bounds [-3 3 -3 3 0 0 -270 270.0 ]
   )
 
-agent( pose [ 3.4 14.91 0.00 0.0] color "blue")
-agent( pose [ 3.6 15.3 0.00 0] color "green")
-agent( pose [ 4.05 15.15 0.00 0] color "yellow")
-agent( pose [ 4.0 14.71 0.00 0] color "red")
-agent( pose [ 3.6 14.57 0.00 0] color "black")
+agent( pose [ 3.400 14.910 0.000 0.000] color "blue")
+agent( pose [ 3.600 15.300 0.000 0.000] color "green")
+agent( pose [ 4.050 15.150 0.000 0.000] color "yellow")
+agent( pose [ 4.000 14.710 0.000 0.000] color "red")
+agent( pose [ 3.600 14.570 0.000 0.000] color "black")
