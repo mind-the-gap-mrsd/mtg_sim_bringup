@@ -12,6 +12,8 @@ import sched
 import time
 from visualization_msgs.msg import Marker
 s = sched.scheduler(time.time, time.sleep)
+from apriltag_ros.msg import AprilTagDetectionArray
+from apriltag_ros.msg import AprilTagDetection
 
 
 class AprilTagSim:
@@ -25,6 +27,7 @@ class AprilTagSim:
         self.detected_april_tags = []
         self.victim_pub = rospy.Publisher(
             "/slam_toolbox/victim_markers", Marker, queue_size=10)
+        self.apriltag_feedback_pub = {}
 
     def get_map_info(self):
         """
@@ -92,6 +95,10 @@ class AprilTagSim:
             active_agents = resp1.agents_active
             for a in active_agents:
                 self.agent_active_status[a] = True
+                # Initiate feedback publisher
+                self.apriltag_feedback_pub[a] = rospy.Publisher(
+                    "/robosar_agent_bringup_node/" + str(a) + "/feedback/apriltag", AprilTagDetectionArray, queue_size=10)
+
             print("{} agents active".format(len(self.agent_active_status)))
             assert len(self.agent_active_status) > 0
         except rospy.ServiceException as e:
@@ -137,6 +144,21 @@ class AprilTagSim:
         m.color.b = 1
         m.color.a = 1
         self.victim_pub.publish(m)
+
+        detection_array = AprilTagDetectionArray()
+        detection_array.header.frame_id = "map"
+        detection_array.header.stamp = rospy.Time.now()
+        detection = AprilTagDetection()
+        detection.id = [tag_id]
+        detection.pose.pose.pose.position.x = pose[0]
+        detection.pose.pose.pose.position.y = pose[1]
+        detection.pose.pose.pose.position.z = 0
+        detection.pose.pose.pose.orientation.x = 0
+        detection.pose.pose.pose.orientation.y = 0
+        detection.pose.pose.pose.orientation.z = 0
+        detection.pose.pose.pose.orientation.w = 1
+        detection_array.detections.append(detection)
+        self.apriltag_feedback_pub[agent_name].publish(detection_array)
 
     def check_agent_poses(self):
         robot_poses = self.get_agent_position()
