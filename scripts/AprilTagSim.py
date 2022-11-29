@@ -146,7 +146,7 @@ class AprilTagSim:
         self.victim_pub.publish(m)
 
         detection_array = AprilTagDetectionArray()
-        detection_array.header.frame_id = "map"
+        detection_array.header.frame_id = agent_name + "/base_link"
         detection_array.header.stamp = rospy.Time.now()
         detection = AprilTagDetection()
         detection.id = [tag_id]
