@@ -6,8 +6,8 @@ import rospy
 import tf
 from geometry_msgs.msg import Point, PointStamped
 from nav_msgs.msg import OccupancyGrid
-from robosar_messages.msg import *
-from robosar_messages.srv import *
+from mtg_messages.msg import *
+from mtg_messages.srv import *
 import sched
 import time
 from visualization_msgs.msg import Marker
@@ -86,10 +86,10 @@ class AprilTagSim:
         # Get active agents
         self.agent_active_status = {}
         print("calling agent status service")
-        rospy.wait_for_service("/robosar_agent_bringup_node/agent_status")
+        rospy.wait_for_service("/mtg_agent_bringup_node/agent_status")
         try:
             get_status = rospy.ServiceProxy(
-                "/robosar_agent_bringup_node/agent_status", agent_status
+                "/mtg_agent_bringup_node/agent_status", agent_status
             )
             resp1 = get_status()
             active_agents = resp1.agents_active
@@ -97,7 +97,7 @@ class AprilTagSim:
                 self.agent_active_status[a] = True
                 # Initiate feedback publisher
                 self.apriltag_feedback_pub[a] = rospy.Publisher(
-                    "/robosar_agent_bringup_node/" + str(a) + "/feedback/apriltag", AprilTagDetectionArray, queue_size=10)
+                    "/mtg_agent_bringup_node/" + str(a) + "/feedback/apriltag", AprilTagDetectionArray, queue_size=10)
 
             print("{} agents active".format(len(self.agent_active_status)))
             assert len(self.agent_active_status) > 0

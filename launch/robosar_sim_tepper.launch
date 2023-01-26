@@ -2,14 +2,14 @@
   <master auto="start"/>
   <param name="/use_sim_time" value="true"/>
 
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find robosar_sim_bringup)/worlds/stage_config/maps/tepper.yaml" respawn="false" >
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find mtg_sim_bringup)/worlds/stage_config/maps/tepper.yaml" respawn="false" >
     <remap from="/map" to="/sim_map"/>
   </node>
   
-  <node pkg="robosar_sim_bringup" type="AprilTagSim.py" name="generate_april_tags_node" output="screen" />
+  <node pkg="mtg_sim_bringup" type="AprilTagSim.py" name="generate_april_tags_node" output="screen" />
 
-  <group ns="robosar_agent_bringup_node">
-    <node pkg="stage_ros_add_pose_and_crash" type="stageros" name="stageros" args="$(find robosar_sim_bringup)/worlds/stage_config/worlds/tepper.world" output="screen" respawn="false" >
+  <group ns="mtg_agent_bringup_node">
+    <node pkg="stage_ros_add_pose_and_crash" type="stageros" name="stageros" args="$(find mtg_sim_bringup)/worlds/stage_config/worlds/tepper.world" output="screen" respawn="false" >
       <param name="base_watchdog_timeout" value="0.2"/>
     </node>
   </group>
@@ -24,6 +24,6 @@
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="link5_broadcaster" args="0 0 0 0 0 0 1 map agent_4/odom" />
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robosar_sim_bringup)/rviz/multi_robot.rviz">
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mtg_sim_bringup)/rviz/multi_robot.rviz">
   </node>
 </launch>
